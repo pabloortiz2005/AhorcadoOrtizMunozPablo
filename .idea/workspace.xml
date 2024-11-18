@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="Entidad relacion, modelo relacional y base de datos">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="conexion a la base de datos y ventana de inicio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731944325495</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="conexion a la base de datos y ventana de inicio">
+      <option name="closed" value="true" />
+      <created>1731945786750</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731945786750</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +114,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="inicio" />
     <MESSAGE value="Entidad relacion, modelo relacional y base de datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entidad relacion, modelo relacional y base de datos" />
+    <MESSAGE value="conexion a la base de datos y ventana de inicio" />
+    <option name="LAST_COMMIT_MESSAGE" value="conexion a la base de datos y ventana de inicio" />
   </component>
 </project>
