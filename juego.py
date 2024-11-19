@@ -8,7 +8,7 @@ class Juego:
         self.nombre = nombre
         self.tematica = tematica
         self.conn = Conexion()
-        self.intentos = 3
+        self.intentos = 6
         self.palabra_seleccionada = None
         self.letras_adivinadas = []
 
@@ -58,30 +58,52 @@ class Juego:
         letra = self.entry_letra.get().lower()
         self.entry_letra.delete(0, tk.END)
 
+        if self.intentos <= 0:
+            #se agotan intentos
+            return
+
         if letra in self.palabra_seleccionada:
             for i in range(len(self.palabra_seleccionada)):
                 if self.palabra_seleccionada[i] == letra:
                     self.letras_adivinadas[i] = letra
             self.label_palabra.config(text=' '.join(self.letras_adivinadas))
 
+            # Verificar si ya se adivinó toda la palabra
             if '_' not in self.letras_adivinadas:
+                # El jugador ha ganado
                 messagebox.showinfo("Has ganado", f"{self.nombre} Adivinaste la palabra: {self.palabra_seleccionada}")
                 self.conn.actualizar_estadisticas(self.nombre, True)
+
+                # Deshabilitar todos los controles excepto el botón "Volver a jugar"
+                self.entry_letra.config(state=tk.DISABLED)
+                for b in self.ventana_juego.winfo_children():
+                    if isinstance(b, tk.Button) and b.cget("text") != "Volver a jugar":
+                        b.config(state=tk.DISABLED)
                 return
         else:
+            # Restar un intento solo si aún quedan intentos
             self.intentos -= 1
             self.label_intentos.config(text=f"Intentos restantes: {self.intentos}")
+
             if self.intentos == 0:
+
                 messagebox.showinfo("Perdiste", f"La palabra era: {self.palabra_seleccionada}")
                 self.conn.actualizar_estadisticas(self.nombre, False)
+
+                # Deshabilitar todos los controles excepto el botón "Volver a jugar"
+                self.entry_letra.config(state=tk.DISABLED)
+                for b in self.ventana_juego.winfo_children():
+                    if isinstance(b, tk.Button) and b.cget("text") != "Volver a jugar":
+                        b.config(state=tk.DISABLED)
                 return
 
     def reiniciar_juego(self):
         # Restablecer intentos y palabra
-        self.intentos = 3
+        self.intentos = 6
         self.letras_adivinadas = []
 
-        # Lista de palabras según temática
+
+
         palabras_frutas = ['manzana', 'plátano', 'piña', 'pomelo', 'limon']
         palabras_informatica = ['python', 'java', 'C#', 'kotlin', 'al']
         palabras_personas = ['pablo', 'martin', 'raul', 'rafa', 'niko']
@@ -96,11 +118,26 @@ class Juego:
         self.palabra_seleccionada = random.choice(palabras)
         self.letras_adivinadas = ['_'] * len(self.palabra_seleccionada)
 
-        # Actualizar palabras e intentos
+
         self.label_palabra.config(text='_ ' * len(self.palabra_seleccionada))
         self.label_intentos.config(text=f"Intentos restantes: {self.intentos}")
 
     def volver_a_jugar(self):
-
+        # Restablecer intentos y palabra
         self.reiniciar_juego()
+
+
+        self.entry_letra.config(state=tk.NORMAL)
+        self.label_palabra.config(state=tk.NORMAL)
+        self.label_intentos.config(state=tk.NORMAL)
+
+
+        for b in self.ventana_juego.winfo_children():
+            if isinstance(b, tk.Button):
+                if b.cget("text") != "Volver a jugar":
+                    b.config(state=tk.NORMAL)
+
+
+
+
 
