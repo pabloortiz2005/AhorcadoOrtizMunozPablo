@@ -102,3 +102,5 @@ class Conexion:
         if self.conn:
             self.conn.close()
             print("Conexión cerrada")
+    def cursor2(self):
+        return self.conn.cursor()

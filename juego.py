@@ -52,6 +52,9 @@ class Juego:
 
         btn_volver_a_jugar = tk.Button(self.ventana_juego, text="Volver a jugar", command=self.volver_a_jugar)
         btn_volver_a_jugar.pack(pady=20)
+        # Botón para ver las estadísticas
+        btn_estadisticas = tk.Button(self.ventana_juego, text="Estadísticas", command=self.estadisticas)
+        btn_estadisticas.pack(pady=20)
 
         self.ventana_juego.mainloop()
 
@@ -140,6 +143,33 @@ class Juego:
                     b.config(state=tk.NORMAL)
 
 
+    def estadisticas(self):
+        # Crear ventana de estadísticas
+        ventana_estadisticas = tk.Toplevel(self.ventana_juego)  # Ventana secundaria
+        ventana_estadisticas.title("Estadísticas de Usuarios")
 
+        usuarios = self.conn.obtener_estadisticas()
+
+
+        #print(usuarios)
+
+        if not usuarios:
+            messagebox.showinfo("Sin estadísticas", "No hay usuarios registrados aún.")
+            ventana_estadisticas.destroy()  # Cerrar la ventana si no hay registros
+            return
+
+        # Encabezado de la ventana
+        encabezado = tk.Label(ventana_estadisticas, text="Estadísticas de los Jugadores", font=("Arial", 14, "bold"))
+        encabezado.pack(pady=10)
+
+        # Mostrar las estadísticas de cada usuario
+        for usuario, victorias, derrotas in usuarios:
+            texto_usuario = f"{usuario}: {victorias} victorias, {derrotas} derrotas"
+            label_usuario = tk.Label(ventana_estadisticas, text=texto_usuario, font=("Arial", 12))
+            label_usuario.pack()
+
+        # Botón para cerrar la ventana de estadísticas
+        btn_cerrar = tk.Button(ventana_estadisticas, text="Cerrar", command=ventana_estadisticas.destroy)
+        btn_cerrar.pack(pady=20)
 
 
