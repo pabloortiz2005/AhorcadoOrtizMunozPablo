@@ -59,11 +59,27 @@ class Conexion:
             cursor.execute("SELECT nombre, victorias, derrotas FROM Jugador")
             resultados = cursor.fetchall()
             cursor.close()
+
+            # Depurar los resultados obtenidos
+            print(f"Resultados obtenidos de la base de datos: {resultados}")
+
             return resultados
         except mysql.connector.Error as err:
             print(f"Error al obtener estadísticas: {err}")
             return []
 
+    def insertar_jugador(self, nombre):
+        if not self.conn:
+            return False
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("INSERT INTO Jugador (nombre, victorias, derrotas) VALUES (%s, 0, 0)", (nombre,))
+            self.conn.commit()
+            cursor.close()
+            return True
+        except mysql.connector.Error as err:
+            print(f"Error al insertar jugador: {err}")
+            return False
     def cerrar(self):
         if self.conn:
             self.conn.close()

@@ -99,6 +99,7 @@ class Juego:
 
     def reiniciar_juego(self):
         # Restablecer intentos y palabra
+        palabras= ""
         self.intentos = 6
         self.letras_adivinadas = []
 

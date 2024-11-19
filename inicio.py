@@ -4,6 +4,8 @@ import tkinter as tk
 from tkinter import messagebox
 from turtledemo.sorting_animate import ssort
 
+import mysql
+
 from juego import Juego
 from conexion import Conexion
 
@@ -64,7 +66,10 @@ class Inicio:
         if self.conn.verificar_jugador(nombre):
             messagebox.showinfo("Jugador encontrado", f"Hola {nombre}")
         else:
-            messagebox.showinfo("Nuevo jugador", f"Hola, {nombre}, Se ha creado tu perfil")
+            if self.conn.insertar_jugador(nombre):
+                messagebox.showinfo("Nuevo jugador", f"Hola, {nombre}, Se ha creado tu perfil")
+            else:
+                messagebox.showerror("Error", "Hubo un problema al crear tu perfil.")
 
         self.root.destroy()
         Juego(nombre, self.tematica_elegida)
@@ -74,8 +79,11 @@ class Inicio:
         ventana_estadisticas = tk.Toplevel(self.root)  # Ventana secundaria
         ventana_estadisticas.title("Estadísticas de Usuarios")
 
-        # Recuperar las estadísticas de los jugadores desde la base de datos
+
         usuarios = self.conn.obtener_estadisticas()
+
+
+        print(f"Usuarios recuperados: {usuarios}")
 
         if not usuarios:
             messagebox.showinfo("Sin estadísticas", "No hay usuarios registrados aún.")
@@ -88,6 +96,7 @@ class Inicio:
 
         # Mostrar las estadísticas de cada usuario
         for usuario, victorias, derrotas in usuarios:
+            print(f"Mostrando estadísticas para: {usuario}, victorias: {victorias}, derrotas: {derrotas}")
             texto_usuario = f"{usuario}: {victorias} victorias, {derrotas} derrotas"
             label_usuario = tk.Label(ventana_estadisticas, text=texto_usuario, font=("Arial", 12))
             label_usuario.pack()
@@ -95,6 +104,7 @@ class Inicio:
         # Botón para cerrar la ventana de estadísticas
         btn_cerrar = tk.Button(ventana_estadisticas, text="Cerrar", command=ventana_estadisticas.destroy)
         btn_cerrar.pack(pady=20)
+
 
 
 
