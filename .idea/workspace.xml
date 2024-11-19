@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="intento segunda ventana">
-      <change beforePath="$PROJECT_DIR$/.idea/Ahorcado.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Ahorcado.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="botones no funcionales si ganas o pierdes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/juego.py" beforeDir="false" afterPath="$PROJECT_DIR$/juego.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conexion.py" beforeDir="false" afterPath="$PROJECT_DIR$/conexion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inicio.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731947263909</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="botones no funcionales si ganas o pierdes">
+      <option name="closed" value="true" />
+      <created>1732032180558</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732032180558</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +136,7 @@
     <MESSAGE value="Entidad relacion, modelo relacional y base de datos" />
     <MESSAGE value="conexion a la base de datos y ventana de inicio" />
     <MESSAGE value="intento segunda ventana" />
-    <option name="LAST_COMMIT_MESSAGE" value="intento segunda ventana" />
+    <MESSAGE value="botones no funcionales si ganas o pierdes" />
+    <option name="LAST_COMMIT_MESSAGE" value="botones no funcionales si ganas o pierdes" />
   </component>
 </project>

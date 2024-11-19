@@ -1,5 +1,5 @@
-
 import mysql.connector
+from mysql.connector import Error  # Importación correcta de Error
 
 class Conexion:
     def __init__(self):
@@ -7,57 +7,64 @@ class Conexion:
 
     def conectar(self):
         try:
+
             self.conn = mysql.connector.connect(
                 host="localhost",
                 user="root",
                 password="",
                 database="Ahorcado"
             )
+            if self.conn.is_connected():
+                print("Conexión exitosa")
+                return True
         except mysql.connector.Error as err:
             print(f"Error de conexión: {err}")
             return False
-        return True
 
     def verificar_jugador(self, nombre):
         if not self.conn:
             return False
 
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT * FROM Jugador WHERE nombre = %s", (nombre,))
-        jugador = cursor.fetchone()
-        return jugador is not None
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("SELECT * FROM Jugador WHERE nombre = %s", (nombre,))
+            jugador = cursor.fetchone()
+            cursor.close()
+            return jugador is not None
+        except mysql.connector.Error as err:
+            print(f"Error al verificar jugador: {err}")
+            return False
 
     def actualizar_estadisticas(self, nombre, victoria):
         if not self.conn:
             return
 
-        cursor = self.conn.cursor()
-        if victoria:
-            cursor.execute("UPDATE Jugador SET victorias = victorias + 1 WHERE nombre = %s", (nombre,))
-        else:
-            cursor.execute("UPDATE Jugador SET derrotas = derrotas + 1 WHERE nombre = %s", (nombre,))
-        self.conn.commit()
-
-    def obtener_estadisticas(self):
         try:
             cursor = self.conn.cursor()
-            query = """
-                  
-                    SELECT j.nombre, 
-                    SUM(CASE WHEN p.resultado = 'ganada' THEN 1 ELSE 0 END) AS victorias,
-                    SUM(CASE WHEN p.resultado = 'perdida' THEN 1 ELSE 0 END) AS derrotas
-                    FROM Jugador j
-                    LEFT JOIN Partida p ON j.id_jugador = p.id_jugador
-                    GROUP BY j.id_jugador
+            if victoria:
+                cursor.execute("UPDATE Jugador SET victorias = victorias + 1 WHERE nombre = %s", (nombre,))
+            else:
+                cursor.execute("UPDATE Jugador SET derrotas = derrotas + 1 WHERE nombre = %s", (nombre,))
+            self.conn.commit()
+            cursor.close()
+        except mysql.connector.Error as err:
+            print(f"Error al actualizar estadísticas: {err}")
 
-              """
-            cursor.execute(query)
-            usuarios = cursor.fetchall()
-            return usuarios
-        except Exception as e:
-            print(f"Error al obtener estadísticas: {e}")
+    def obtener_estadisticas(self):
+        if not self.conn:
+            return []
+
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("SELECT nombre, victorias, derrotas FROM Jugador")
+            resultados = cursor.fetchall()
+            cursor.close()
+            return resultados
+        except mysql.connector.Error as err:
+            print(f"Error al obtener estadísticas: {err}")
             return []
 
     def cerrar(self):
         if self.conn:
             self.conn.close()
+            print("Conexión cerrada")
