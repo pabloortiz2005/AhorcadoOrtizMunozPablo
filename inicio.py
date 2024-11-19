@@ -74,12 +74,13 @@ class Inicio:
 
     def estadisticas(self):
         # Crear ventana de estadísticas
-        ventana_estadisticas = tk.Toplevel(self.root)
+        ventana_estadisticas = tk.Toplevel(self.root)  # Ventana secundaria
         ventana_estadisticas.title("Estadísticas de Usuarios")
 
         usuarios = self.conn.obtener_estadisticas()
 
-        print(f"Usuarios recuperados: {usuarios}")
+
+        #print(usuarios)
 
         if not usuarios:
             messagebox.showinfo("Sin estadísticas", "No hay usuarios registrados aún.")
@@ -92,7 +93,6 @@ class Inicio:
 
         # Mostrar las estadísticas de cada usuario
         for usuario, victorias, derrotas in usuarios:
-            print(f"Mostrando estadísticas para: {usuario}, victorias: {victorias}, derrotas: {derrotas}")
             texto_usuario = f"{usuario}: {victorias} victorias, {derrotas} derrotas"
             label_usuario = tk.Label(ventana_estadisticas, text=texto_usuario, font=("Arial", 12))
             label_usuario.pack()
@@ -100,3 +100,4 @@ class Inicio:
         # Botón para cerrar la ventana de estadísticas
         btn_cerrar = tk.Button(ventana_estadisticas, text="Cerrar", command=ventana_estadisticas.destroy)
         btn_cerrar.pack(pady=20)
+

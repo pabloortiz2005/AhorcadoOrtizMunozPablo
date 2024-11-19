@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="solucion de bbdd">
+    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="solucion de bbdd 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ahorcado.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ahorcado.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conexion.py" beforeDir="false" afterPath="$PROJECT_DIR$/conexion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inicio.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +49,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.conexion.executor": "Run",
+    "Python.inicio.executor": "Run",
     "Python.juego.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -150,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732035817184</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="solucion de bbdd 2">
+      <option name="closed" value="true" />
+      <created>1732036029914</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732036029914</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +184,7 @@
     <MESSAGE value="guardar usuarios nuevos" />
     <MESSAGE value="solucion de errores" />
     <MESSAGE value="solucion de bbdd" />
-    <option name="LAST_COMMIT_MESSAGE" value="solucion de bbdd" />
+    <MESSAGE value="solucion de bbdd 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="solucion de bbdd 2" />
   </component>
 </project>
