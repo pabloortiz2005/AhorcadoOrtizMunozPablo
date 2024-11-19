@@ -53,7 +53,7 @@ class Inicio:
             messagebox.showwarning("Ingresa Nombre", "Por favor ingresa tu nombre")
             return
 
-        if not self.tematica_elegida:  # Verifica si no se ha elegido una temática
+        if not self.tematica_elegida:
             messagebox.showwarning("Selecciona una temática", "Por favor selecciona una temática para jugar.")
             return
 
@@ -74,7 +74,7 @@ class Inicio:
 
     def estadisticas(self):
         # Crear ventana de estadísticas
-        ventana_estadisticas = tk.Toplevel(self.root)  # Ventana secundaria
+        ventana_estadisticas = tk.Toplevel(self.root)
         ventana_estadisticas.title("Estadísticas de Usuarios")
 
         usuarios = self.conn.obtener_estadisticas()

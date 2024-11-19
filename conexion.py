@@ -51,21 +51,13 @@ class Conexion:
             print(f"Error al actualizar estadísticas: {err}")
 
     def obtener_estadisticas(self):
-        if not self.conn:
-            return []
-
         try:
             cursor = self.conn.cursor()
             cursor.execute("SELECT nombre, victorias, derrotas FROM Jugador")
-            resultados = cursor.fetchall()
-            cursor.close()
-
-            # Depurar los resultados obtenidos
-            print(f"Resultados obtenidos de la base de datos: {resultados}")
-
-            return resultados
-        except mysql.connector.Error as err:
-            print(f"Error al obtener estadísticas: {err}")
+            usuarios = cursor.fetchall()
+            return usuarios
+        except Exception as e:
+            print(f"Error al obtener estadísticas: {e}")
             return []
 
     def insertar_jugador(self, nombre):
