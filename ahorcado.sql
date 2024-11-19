@@ -18,16 +18,3 @@ CREATE TABLE IF NOT EXISTS Partida (
     FOREIGN KEY (id_jugador) REFERENCES Jugador(id_jugador)
 );
 
--- jugadores de ejemplo
-INSERT INTO Jugador (nombre) 
-VALUES 
-('Raul martin'),
-('Martin');
-
--- partidas de ejemplo
-INSERT INTO Partida (id_jugador, palabra)
-VALUES
-(1, 'python'),
-(1, 'java'),
-(2, 'javascript'),
-(2, 'csharp');

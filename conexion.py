@@ -51,10 +51,14 @@ class Conexion:
             print(f"Error al actualizar estadísticas: {err}")
 
     def obtener_estadisticas(self):
+        if not self.conn or not self.conn.is_connected():
+            print("La conexión no está activa.")
+            return []
         try:
             cursor = self.conn.cursor()
             cursor.execute("SELECT nombre, victorias, derrotas FROM Jugador")
             usuarios = cursor.fetchall()
+            print(f"Usuarios recuperados: {usuarios}")
             return usuarios
         except Exception as e:
             print(f"Error al obtener estadísticas: {e}")
@@ -62,16 +66,19 @@ class Conexion:
 
     def insertar_jugador(self, nombre):
         if not self.conn:
+            print("No hay conexión con la base de datos.")
             return False
         try:
             cursor = self.conn.cursor()
             cursor.execute("INSERT INTO Jugador (nombre, victorias, derrotas) VALUES (%s, 0, 0)", (nombre,))
             self.conn.commit()
             cursor.close()
+            print(f"Jugador {nombre} insertado correctamente.")
             return True
         except mysql.connector.Error as err:
             print(f"Error al insertar jugador: {err}")
             return False
+
     def cerrar(self):
         if self.conn:
             self.conn.close()
