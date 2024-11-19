@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="stats">
+    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="guardar usuarios nuevos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conexion.py" beforeDir="false" afterPath="$PROJECT_DIR$/conexion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inicio.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/juego.py" beforeDir="false" afterPath="$PROJECT_DIR$/juego.py" afterDir="false" />
     </list>
@@ -127,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732032766346</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="guardar usuarios nuevos">
+      <option name="closed" value="true" />
+      <created>1732034694321</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732034694321</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +155,7 @@
     <MESSAGE value="intento segunda ventana" />
     <MESSAGE value="botones no funcionales si ganas o pierdes" />
     <MESSAGE value="stats" />
-    <option name="LAST_COMMIT_MESSAGE" value="stats" />
+    <MESSAGE value="guardar usuarios nuevos" />
+    <option name="LAST_COMMIT_MESSAGE" value="guardar usuarios nuevos" />
   </component>
 </project>

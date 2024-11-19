@@ -1,11 +1,5 @@
-
-
 import tkinter as tk
 from tkinter import messagebox
-from turtledemo.sorting_animate import ssort
-
-import mysql
-
 from juego import Juego
 from conexion import Conexion
 
@@ -59,6 +53,10 @@ class Inicio:
             messagebox.showwarning("Ingresa Nombre", "Por favor ingresa tu nombre")
             return
 
+        if not self.tematica_elegida:  # Verifica si no se ha elegido una temática
+            messagebox.showwarning("Selecciona una temática", "Por favor selecciona una temática para jugar.")
+            return
+
         if not self.conn.conectar():
             messagebox.showerror("Error de conexión", "No se pudo conectar con la base de datos.")
             return
@@ -79,9 +77,7 @@ class Inicio:
         ventana_estadisticas = tk.Toplevel(self.root)  # Ventana secundaria
         ventana_estadisticas.title("Estadísticas de Usuarios")
 
-
         usuarios = self.conn.obtener_estadisticas()
-
 
         print(f"Usuarios recuperados: {usuarios}")
 
@@ -104,7 +100,3 @@ class Inicio:
         # Botón para cerrar la ventana de estadísticas
         btn_cerrar = tk.Button(ventana_estadisticas, text="Cerrar", command=ventana_estadisticas.destroy)
         btn_cerrar.pack(pady=20)
-
-
-
-

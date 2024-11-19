@@ -19,6 +19,7 @@ class Juego:
         palabras_frutas = ['manzana', 'plátano', 'piña', 'pomelo', 'limon']
         palabras_informatica = ['python', 'java', 'C#', 'kotlin', 'al']
         palabras_personas = ['pablo', 'martin', 'raul', 'rafa', 'niko']
+        palabras = []
 
         if self.tematica == 'Frutas':
             palabras = palabras_frutas
@@ -99,7 +100,7 @@ class Juego:
 
     def reiniciar_juego(self):
         # Restablecer intentos y palabra
-        palabras= ""
+
         self.intentos = 6
         self.letras_adivinadas = []
 
