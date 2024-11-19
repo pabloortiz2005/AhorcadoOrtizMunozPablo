@@ -1,4 +1,3 @@
-# conexion.py
 
 import mysql.connector
 
@@ -38,6 +37,26 @@ class Conexion:
         else:
             cursor.execute("UPDATE Jugador SET derrotas = derrotas + 1 WHERE nombre = %s", (nombre,))
         self.conn.commit()
+
+    def obtener_estadisticas(self):
+        try:
+            cursor = self.conn.cursor()
+            query = """
+                  
+                    SELECT j.nombre, 
+                    SUM(CASE WHEN p.resultado = 'ganada' THEN 1 ELSE 0 END) AS victorias,
+                    SUM(CASE WHEN p.resultado = 'perdida' THEN 1 ELSE 0 END) AS derrotas
+                    FROM Jugador j
+                    LEFT JOIN Partida p ON j.id_jugador = p.id_jugador
+                    GROUP BY j.id_jugador
+
+              """
+            cursor.execute(query)
+            usuarios = cursor.fetchall()
+            return usuarios
+        except Exception as e:
+            print(f"Error al obtener estadísticas: {e}")
+            return []
 
     def cerrar(self):
         if self.conn:

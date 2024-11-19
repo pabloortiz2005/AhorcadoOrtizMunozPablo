@@ -1,7 +1,9 @@
-# inicio.py
+
 
 import tkinter as tk
 from tkinter import messagebox
+from turtledemo.sorting_animate import ssort
+
 from juego import Juego
 from conexion import Conexion
 
@@ -13,9 +15,9 @@ class Inicio:
         self.tematica_elegida = None
         self.conn = Conexion()
 
-        self.crear_widgets()
+        self.crear_ventana()
 
-    def crear_widgets(self):
+    def crear_ventana(self):
         label_nombre = tk.Label(self.root, text="Ingresa tu nombre:")
         label_nombre.pack(pady=10)
 
@@ -39,6 +41,8 @@ class Inicio:
 
         btn_jugar = tk.Button(self.root, text="Jugar", command=self.jugar)
         btn_jugar.pack(pady=20)
+        btn_estadisticas = tk.Button(self.root, text="Estadisticas", command=self.estadisticas)
+        btn_jugar.pack(pady=20)
 
     def elegir_tematica(self):
         self.tematica_elegida = self.tema_escogido.get()
@@ -61,3 +65,32 @@ class Inicio:
 
         self.root.destroy()
         Juego(nombre, self.tematica_elegida)
+
+    def estadisticas(self):
+        self.root.destroy()
+        ventana_estadisticas = tk.Toplevel()
+        ventana_estadisticas.title("Estadísticas de Usuarios")
+
+        usuarios = self.conn.obtener_estadisticas()
+
+        if not usuarios:
+            messagebox.showinfo("Sin estadísticas", "No hay usuarios registrados aún.")
+            ventana_estadisticas.destroy()
+            return
+
+
+        encabezado = tk.Label(ventana_estadisticas, text="Estadísticas de los Jugadores", font=("Arial", 14, "bold"))
+        encabezado.pack(pady=10)
+
+
+        for usuario, victorias, derrotas in usuarios:
+            texto_usuario = f"{usuario}: {victorias} victorias, {derrotas} derrotas"
+            label_usuario = tk.Label(ventana_estadisticas, text=texto_usuario, font=("Arial", 12))
+            label_usuario.pack()
+
+
+        btn_cerrar = tk.Button(ventana_estadisticas, text="Cerrar", command=ventana_estadisticas.destroy)
+        btn_cerrar.pack(pady=20)
+
+
+
