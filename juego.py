@@ -12,6 +12,7 @@ class Juego:
         self.palabra_seleccionada = None
         self.letras_adivinadas = []
 
+
         self.conn.conectar()
         self.iniciar_ventana()
 
@@ -33,20 +34,21 @@ class Juego:
         self.letras_adivinadas = ['_'] * len(self.palabra_seleccionada)
 
         self.ventana_juego = tk.Tk()
+        self.ventana_juego.configure(bg='gray')
         self.ventana_juego.title("Juego Ahorcado")
         self.ventana_juego.geometry("1800x1800")
 
         self.imagenes_intentos = {
             6: tk.PhotoImage(file="resources/ahorcado.png"),
-            5: tk.PhotoImage(file="resources/ahorcado2.png"),
-            4: tk.PhotoImage(file="resources/ahorcado3.png"),
-            3: tk.PhotoImage(file="resources/ahorcado4.png"),
-            2: tk.PhotoImage(file="resources/ahorcado5.png"),
-            1: tk.PhotoImage(file="resources/ahorcado6.png"),
-            0: tk.PhotoImage(file="resources/ahorcado_0.png")
+            5: tk.PhotoImage(file="resources/ahorcadokiko1.png"),
+            4: tk.PhotoImage(file="resources/ahorcadokiko2.png"),
+            3: tk.PhotoImage(file="resources/ahorcadokiko3.png"),
+            2: tk.PhotoImage(file="resources/ahorcadokiko4.png"),
+            1: tk.PhotoImage(file="resources/ahorcadokiko5.png"),
+            0: tk.PhotoImage(file="resources/ahorcadokikodead.png")
         }
 
-        self.imagen = tk.Label(self.ventana_juego, image=self.imagenes_intentos[6])
+        self.imagen = tk.Label(self.ventana_juego, image=self.imagenes_intentos[6], bg="white")
         self.imagen.pack(pady=10)
 
         # Etiquetas y otros elementos de la ventana

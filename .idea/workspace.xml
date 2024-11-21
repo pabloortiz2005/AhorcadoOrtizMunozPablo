@@ -4,16 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="logica terminada">
-      <change afterPath="$PROJECT_DIR$/resources/ahorcado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ahorcado2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ahorcado3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ahorcado4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ahorcado5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ahorcado6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/ahorcado_0.png" afterDir="false" />
+    <list default="true" id="784c94e6-e80d-45a5-b1c3-7f2fe0b2a01c" name="Changes" comment="MUÑECO Y FINISH">
+      <change afterPath="$PROJECT_DIR$/resources/ahorcadokiko1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ahorcadokiko2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ahorcadokiko3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ahorcadokiko4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ahorcadokiko5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/ahorcadokikodead.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/kiko.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModeloRelacional.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ModeloRelacional.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inicio.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/juego.py" beforeDir="false" afterPath="$PROJECT_DIR$/juego.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ahorcado2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ahorcado3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ahorcado4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ahorcado5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ahorcado6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ahorcado_0.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +78,7 @@
       <recent name="C:\Users\alumno\Desktop\gitahorcado\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alumno\Desktop\gitahorcado\resources" />
       <recent name="C:\Users\Usuario\PycharmProjects\Ahorcado" />
     </key>
   </component>
@@ -214,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732044277201</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="MUÑECO Y FINISH">
+      <option name="closed" value="true" />
+      <created>1732200187499</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1732200187499</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,6 +258,7 @@
     <MESSAGE value="solucion de bbdd 2" />
     <MESSAGE value="solucion de bbdd 3" />
     <MESSAGE value="logica terminada" />
-    <option name="LAST_COMMIT_MESSAGE" value="logica terminada" />
+    <MESSAGE value="MUÑECO Y FINISH" />
+    <option name="LAST_COMMIT_MESSAGE" value="MUÑECO Y FINISH" />
   </component>
 </project>

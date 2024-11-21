@@ -1,5 +1,3 @@
 Jugador(-id_jugador-, nombre, victorias, derrotas)
 
-R juega con (-id_jugador-, -id_partida-)
-
 Partida(-id_partida-, -id_jugador-(FK), palabra)

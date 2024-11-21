@@ -7,13 +7,20 @@ class Inicio:
     def __init__(self, root):
         self.root = root
         self.root.title("Ahorcado - Inicio")
-        self.root.geometry("400x400")
+        self.root.geometry("1800x1800")
         self.tematica_elegida = None
         self.conn = Conexion()
+        self.root.configure(bg='gray')
 
         self.crear_ventana()
 
     def crear_ventana(self):
+        self.imagenes_intentos = {
+            0: tk.PhotoImage(file="resources/kiko.png")
+        }
+        self.imagen = tk.Label(self.root, image=self.imagenes_intentos[0], bg="gray")
+        self.imagen.pack(pady=10)
+
         label_nombre = tk.Label(self.root, text="Ingresa tu nombre:")
         label_nombre.pack(pady=10)
 
@@ -26,13 +33,13 @@ class Inicio:
         self.tema_escogido = tk.StringVar()
         self.tema_escogido.set(None)
 
-        radio_frutas = tk.Radiobutton(self.root, text="Frutas", variable=self.tema_escogido, value="Frutas", command=self.elegir_tematica)
+        radio_frutas = tk.Radiobutton(self.root, text="Frutas", variable=self.tema_escogido, value="Frutas", command=self.elegir_tematica, bg="gray",font=("Arial", 14, "bold"))
         radio_frutas.pack()
 
-        radio_informatica = tk.Radiobutton(self.root, text="Conceptos informáticos", variable=self.tema_escogido, value="Conceptos informáticos", command=self.elegir_tematica)
+        radio_informatica = tk.Radiobutton(self.root, text="Conceptos informáticos", variable=self.tema_escogido, value="Conceptos informáticos", command=self.elegir_tematica,bg="gray",font=("Arial", 14, "bold"))
         radio_informatica.pack()
 
-        radio_personas = tk.Radiobutton(self.root, text="Nombres de personas", variable=self.tema_escogido, value="Nombres de personas", command=self.elegir_tematica)
+        radio_personas = tk.Radiobutton(self.root, text="Nombres de personas", variable=self.tema_escogido, value="Nombres de personas", command=self.elegir_tematica,bg="gray",font=("Arial", 14, "bold"))
         radio_personas.pack()
 
         # Botón para jugar
