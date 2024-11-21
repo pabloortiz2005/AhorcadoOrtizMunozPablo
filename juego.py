@@ -21,6 +21,7 @@ class Juego:
         palabras_personas = ['pablo', 'martin', 'raul', 'rafa', 'niko']
         palabras = []
 
+
         if self.tematica == 'Frutas':
             palabras = palabras_frutas
         elif self.tematica == 'Conceptos informáticos':
@@ -33,34 +34,54 @@ class Juego:
 
         self.ventana_juego = tk.Tk()
         self.ventana_juego.title("Juego Ahorcado")
-        self.ventana_juego.geometry("400x400")
+        self.ventana_juego.geometry("1800x1800")
 
-        self.label_palabra = tk.Label(self.ventana_juego, text='_ ' * len(self.palabra_seleccionada), font=("Arial", 14))
+        self.imagenes_intentos = {
+            6: tk.PhotoImage(file="resources/ahorcado.png"),
+            5: tk.PhotoImage(file="resources/ahorcado2.png"),
+            4: tk.PhotoImage(file="resources/ahorcado3.png"),
+            3: tk.PhotoImage(file="resources/ahorcado4.png"),
+            2: tk.PhotoImage(file="resources/ahorcado5.png"),
+            1: tk.PhotoImage(file="resources/ahorcado6.png"),
+            0: tk.PhotoImage(file="resources/ahorcado_0.png")
+        }
+
+        self.imagen = tk.Label(self.ventana_juego, image=self.imagenes_intentos[6])
+        self.imagen.pack(pady=10)
+
+        # Etiquetas y otros elementos de la ventana
+        self.label_palabra = tk.Label(self.ventana_juego, text='_ ' * len(self.palabra_seleccionada),
+                                      font=("Arial", 14))
         self.label_palabra.pack(pady=10)
 
-        self.label_intentos = tk.Label(self.ventana_juego, text=f"Intentos restantes: {self.intentos}", font=("Arial", 12))
+        self.label_intentos = tk.Label(self.ventana_juego, text=f"Intentos restantes: {self.intentos}",
+                                       font=("Arial", 12))
         self.label_intentos.pack(pady=10)
 
         label_ingresa_letra = tk.Label(self.ventana_juego, text="Ingresa una letra:")
         label_ingresa_letra.pack(pady=5)
 
-        self.entry_letra = tk.Entry(self.ventana_juego, font=("Arial", 14))
-        self.entry_letra.pack(pady=5)
+        self.mete_letra = tk.Entry(self.ventana_juego, font=("Arial", 14))
+        self.mete_letra.pack(pady=5)
 
         btn_comprobar = tk.Button(self.ventana_juego, text="Comprobar", command=self.comprobar_letra)
         btn_comprobar.pack(pady=20)
 
         btn_volver_a_jugar = tk.Button(self.ventana_juego, text="Volver a jugar", command=self.volver_a_jugar)
         btn_volver_a_jugar.pack(pady=20)
-        # Botón para ver las estadísticas
-        btn_estadisticas = tk.Button(self.ventana_juego, text="Estadísticas", command=self.estadisticas)
+
+        btn_estadisticas = tk.Button(self.ventana_juego, text="Estadisticas", command=self.estadisticas)
         btn_estadisticas.pack(pady=20)
 
         self.ventana_juego.mainloop()
 
+    def actualizar_imagen(self):
+        # Actualizar la imagen según los intentos restantes
+        self.imagen.config(image=self.imagenes_intentos.get(self.intentos, self.imagenes_intentos[0]))
+
     def comprobar_letra(self):
-        letra = self.entry_letra.get().lower()
-        self.entry_letra.delete(0, tk.END)
+        letra = self.mete_letra.get().lower()
+        self.mete_letra.delete(0, tk.END)
 
         if self.intentos <= 0:
             #se agotan intentos
@@ -79,15 +100,18 @@ class Juego:
                 self.conn.actualizar_estadisticas(self.nombre, True)
 
                 # Deshabilitar todos los controles excepto el botón "Volver a jugar"
-                self.entry_letra.config(state=tk.DISABLED)
+                self.mete_letra.config(state=tk.DISABLED)
                 for b in self.ventana_juego.winfo_children():
-                    if isinstance(b, tk.Button) and b.cget("text") != "Volver a jugar":
+                    if isinstance(b, tk.Button) and b.cget("text") not in ["Estadisticas","Volver a jugar"]:
                         b.config(state=tk.DISABLED)
+
                 return
         else:
             # Restar un intento solo si aún quedan intentos
             self.intentos -= 1
             self.label_intentos.config(text=f"Intentos restantes: {self.intentos}")
+
+            self.actualizar_imagen()
 
             if self.intentos == 0:
 
@@ -95,9 +119,10 @@ class Juego:
                 self.conn.actualizar_estadisticas(self.nombre, False)
 
                 # Deshabilitar todos los controles excepto el botón "Volver a jugar"
-                self.entry_letra.config(state=tk.DISABLED)
+                self.mete_letra.config(state=tk.DISABLED)
+
                 for b in self.ventana_juego.winfo_children():
-                    if isinstance(b, tk.Button) and b.cget("text") != "Volver a jugar":
+                    if isinstance(b, tk.Button) and b.cget("text") not in ["Estadisticas", "Volver a jugar"]:
                         b.config(state=tk.DISABLED)
                 return
 
@@ -106,7 +131,7 @@ class Juego:
 
         self.intentos = 6
         self.letras_adivinadas = []
-
+        self.actualizar_imagen()
 
 
         palabras_frutas = ['manzana', 'plátano', 'piña', 'pomelo', 'limon']
@@ -132,7 +157,7 @@ class Juego:
         self.reiniciar_juego()
 
 
-        self.entry_letra.config(state=tk.NORMAL)
+        self.mete_letra.config(state=tk.NORMAL)
         self.label_palabra.config(state=tk.NORMAL)
         self.label_intentos.config(state=tk.NORMAL)
 
